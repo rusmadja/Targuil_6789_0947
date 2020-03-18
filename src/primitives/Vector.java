@@ -6,45 +6,46 @@ public class Vector {
 
     public Vector subtract(Vector other)
     {
-        return new Vector(other.finishPoint.x._coord-this.finishPoint.x._coord,
-                other.finishPoint.y._coord-this.finishPoint.y._coord,
-                other.finishPoint.z._coord-this.finishPoint.z._coord);
+        return new Vector(
+                other.head.x._coord-this.head.x._coord,
+                other.head.y._coord-this.head.y._coord,
+                other.head.z._coord-this.head.z._coord);
     }
     public Vector add(Vector other)
     {
-        return new Vector(this.finishPoint.x._coord + other.finishPoint.x._coord,
-                this.finishPoint.y._coord + other.finishPoint.y._coord,
-                this.finishPoint.z._coord + other.finishPoint.z._coord);
+        return new Vector(this.head.x._coord + other.head.x._coord,
+                this.head.y._coord + other.head.y._coord,
+                this.head.z._coord + other.head.z._coord);
     }
     public Vector scale(int a)
     {
-        return new Vector(this.finishPoint.x._coord*a,
-                this.finishPoint.y._coord*a,
-                this.finishPoint.z._coord*a);
+        return new Vector(this.head.x._coord*a,
+                this.head.y._coord*a,
+                this.head.z._coord*a);
     }
 
     public double dotProduct(Vector other){
-        return (this.finishPoint.x._coord * other.finishPoint.x._coord +
-         this.finishPoint.y._coord * other.finishPoint.y._coord +
-         this.finishPoint.z._coord * other.finishPoint.z._coord );
+        return (this.head.x._coord * other.head.x._coord +
+         this.head.y._coord * other.head.y._coord +
+         this.head.z._coord * other.head.z._coord );
     }
 
     public Vector crossProduct(Vector other){
-        return new Vector( this.finishPoint.y._coord * other.finishPoint.z._coord - this.finishPoint.z._coord * other.finishPoint.y._coord ,
-        this.finishPoint.z._coord * other.finishPoint.x._coord - this.finishPoint.x._coord * other.finishPoint.z._coord ,
-         this.finishPoint.x._coord * other.finishPoint.y._coord - this.finishPoint.y._coord * other.finishPoint.x._coord );
+        return new Vector( this.head.y._coord * other.head.z._coord - this.head.z._coord * other.head.y._coord ,
+        this.head.z._coord * other.head.x._coord - this.head.x._coord * other.head.z._coord ,
+         this.head.x._coord * other.head.y._coord - this.head.y._coord * other.head.x._coord );
     }
     public double lengthSquared(){
         return  Math.sqrt(
-                Math.pow(this.finishPoint.x._coord,2)+
-                Math.pow(this.finishPoint.y._coord,2)+
-                Math.pow(this.finishPoint.z._coord,2));
+                Math.pow(this.head.x._coord,2)+
+                Math.pow(this.head.y._coord,2)+
+                Math.pow(this.head.z._coord,2));
     }
     public double length(){
         return  Math.sqrt(
-                        Math.pow(this.finishPoint.x._coord,2)+
-                        Math.pow(this.finishPoint.y._coord,2)+
-                        Math.pow(this.finishPoint.z._coord,2));
+                        Math.pow(this.head.x._coord,2)+
+                        Math.pow(this.head.y._coord,2)+
+                        Math.pow(this.head.z._coord,2));
     }
     public Vector  normalize(){
         return this;
