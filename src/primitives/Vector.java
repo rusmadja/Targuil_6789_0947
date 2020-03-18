@@ -32,31 +32,30 @@ public class Vector {
 
     public Vector crossProduct(Vector other){
         return new Vector( this.head.y._coord * other.head.z._coord - this.head.z._coord * other.head.y._coord ,
-        this.head.z._coord * other.head.x._coord - this.head.x._coord * other.head.z._coord ,
-         this.head.x._coord * other.head.y._coord - this.head.y._coord * other.head.x._coord );
+                            this.head.z._coord * other.head.x._coord - this.head.x._coord * other.head.z._coord ,
+                            this.head.x._coord * other.head.y._coord - this.head.y._coord * other.head.x._coord );
     }
     public double lengthSquared(){
-        return  Math.sqrt(
-                Math.pow(this.head.x._coord,2)+
-                Math.pow(this.head.y._coord,2)+
-                Math.pow(this.head.z._coord,2));
+        return
+                ((this.head.x._coord)*(this.head.x._coord)+
+                (this.head.y._coord)*(this.head.y._coord)+
+                (this.head.z._coord)*(this.head.z._coord));
     }
     public double length(){
-        return  Math.sqrt(
-                        Math.pow(this.head.x._coord,2)+
-                        Math.pow(this.head.y._coord,2)+
-                        Math.pow(this.head.z._coord,2));
+        return  Math.sqrt(lengthSquared());
     }
     public Vector  normalize(){
+        //TODO
         return this;
     }
     public Vector  normalized(){
+        //TODO
         return this;
     }
 
-    public Vector(Point3D head)
+    public Vector(Point3D OTHER)
             throws IllegalArgumentException{
-        this.head = head;
+        this(OTHER.getX(),OTHER.getY(),OTHER.getZ());
     }
     public Vector(Coordinate x,Coordinate y, Coordinate z)
             throws IllegalArgumentException{
@@ -70,7 +69,6 @@ public class Vector {
     public Vector(Vector other) {
         if(! (other == null))
             this.head = other.head;
-
     }
 
     public Point3D gethead() {
