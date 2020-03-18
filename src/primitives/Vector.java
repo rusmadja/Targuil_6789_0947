@@ -1,7 +1,7 @@
 package primitives;
 
 public class Vector {
-    Point3D finishPoint;
+    Point3D head;
 
     public Vector subtract(Vector other)
     {
@@ -22,27 +22,27 @@ public class Vector {
     public Vector  normalize(){return this;}
     public Vector  normalized(){return this;}
 
-    public Vector(Point3D finishPoint)
+    public Vector(Point3D head)
             throws IllegalArgumentException{
-        this.finishPoint = finishPoint;
+        this.head = head;
     }
     public Vector(Coordinate x,Coordinate y, Coordinate z)
             throws IllegalArgumentException{
-        this.finishPoint = new Point3D(x,y,z);
+        this.head = new Point3D(x,y,z);
     }
     public Vector(double x,double y, double z)
             throws IllegalArgumentException {
-        this.finishPoint = new Point3D(x,y,z);
+        this.head = new Point3D(x,y,z);
     }
     // pas de throws ici
     public Vector(Vector other) {
         if(! (other == null))
-            this.finishPoint = other.finishPoint;
+            this.head = other.head;
 
     }
 
-    public Point3D getFinishPoint() {
-        return finishPoint;
+    public Point3D gethead() {
+        return head;
     }
     @Override
     public boolean equals(Object o) {
@@ -50,12 +50,12 @@ public class Vector {
         if(o==null) return false;
         if (!(o instanceof Vector)) return false;
         Vector vector = (Vector) o;
-        return this.finishPoint.equals(vector.finishPoint);
+        return this.head.equals(vector.head);
     }
     @Override
     public String toString() {
         return "Vector{" +
-                "finishPoint=" + finishPoint.toString() +
+                "head=" + head.toString() +
                 '}';
     }
 
