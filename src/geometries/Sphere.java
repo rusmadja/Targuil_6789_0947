@@ -28,7 +28,7 @@ public class Sphere extends RadialGeometry {
     }
 
     @Override
-    public Vector getNormal(Point3D other) {
+    public Vector getNormal() {
         return null;
     }
 }

@@ -4,5 +4,5 @@ import primitives.Point3D;
 import primitives.Vector;
 
 public interface Geometry {
-    Vector getNormal(Point3D other);
+    Vector getNormal(Point3D _point3D);
 }
