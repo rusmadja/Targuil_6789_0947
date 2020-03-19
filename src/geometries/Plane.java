@@ -22,4 +22,12 @@ public class Plane implements Geometry {
     {
         return new Vector(_normal.get_head());
     }
+
+    @Override
+    public String toString() {
+        return "Plane{" +
+                "_p=" + _p +
+                ", _normal=" + _normal +
+                '}';
+    }
 }
