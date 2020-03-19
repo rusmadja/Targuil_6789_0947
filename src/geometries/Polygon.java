@@ -38,7 +38,8 @@ public class Polygon implements Geometry {
      *                                  <li>The polygon is concave (not convex></li>
      *                                  </ul>
      */
-    public Polygon(Point3D... vertices) {
+    public Polygon(Point3D... vertices)
+    {
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
 //========>>>>>>>>               _vertices = List.of(vertices);
