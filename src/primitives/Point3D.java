@@ -2,93 +2,83 @@ package primitives;
 
 import java.util.Objects;
 
+/**
+ * Class Point3D is the basic class representing a point in a
+ * 3D system.
+ *
+ * @author reouv&raph
+ */
+public class Point3D {
+    Coordinate _x;
+    Coordinate _y;
+    Coordinate _z;
 
-public class Point3D
-{
     /**
-     * @param x = coordinate on the axis X
-     * @param y = coordinate on the axis X
-     * @param z = coordinate on the axis X
+     * @param _x coordinate on the X axis
+     * @param _y coordinate on the Y axis
+     * @param _z coordinate on the Z axis
      */
-    Coordinate x;
-    Coordinate y;
-    Coordinate z;
+    public final static Point3D ZERO = new Point3D(0.0, 0.0, 0.0);
 
-    public final static Point3D ZERO = new Point3D(0.0,0.0,0.0);
+    public Point3D(Coordinate _x, Coordinate _y, Coordinate _z) {
+        this._x = _x;
+        this._y = _y;
+        this._z = _z;
+    }
 
-    public Point3D add(Vector _vector)
-    {
-        return new Point3D(this.x._coord+  _vector.head.x._coord,
-                            this.y._coord+ _vector.head.y._coord,
-                            this.z._coord+ _vector.head.z._coord);
+    public Point3D(Point3D p) {
+        this._x = new Coordinate(p._x);
+        this._y = new Coordinate(p._y);
+        this._z = new Coordinate(p._z);
     }
-    //verifier si c bienn ca substract
-    public Vector subtract (Point3D other)
-    {
-        /*this.x - other.x*/ Coordinate v1 = new Coordinate( this.x._coord-other.x._coord);
-        /*this.y - other.y*/ Coordinate v2 = new Coordinate(this.y._coord-other.y._coord);
-        /*this.z - other.z*/ Coordinate v3 = new Coordinate(this.z._coord-other.z._coord);
-        return new Vector(v1,v2,v3);
+
+
+    public Point3D(double _x, double _y, double _z) {
+        this(new Coordinate(_x), new Coordinate(_y), new Coordinate(_z));
     }
+
+    public Coordinate get_x() {
+        return new Coordinate(_x);
+    }
+
+    public Coordinate get_y() {
+        return new Coordinate(_y);
+    }
+
+    public Coordinate get_z() {
+        return new Coordinate(_z);
+    }
+
+    public Vector subtract(Point3D p) {
+        return new Vector(new Point3D(
+                this._x._coord - p._x._coord,
+                this._y._coord - p._y._coord,
+                this._z._coord - p._z._coord));
+    }
+
     public double distanceSquared(Point3D other)
     {
-        //[(Xa-Xb)²+(Ya-Yb)²+(Za-Zb)²]
-        return ((this.x._coord-other.x._coord)*(this.x._coord-other.x._coord)
-                +(this.y._coord-other.y._coord)*(this.y._coord-other.y._coord)
-                +(this.z._coord-other.z._coord)*(this.z._coord-other.z._coord));
+        return ( (other._x._coord - this._x._coord) * (other._x._coord - this._x._coord) +
+                (other._y._coord - this._y._coord) * (other._y._coord - this._y._coord) +
+                (other._z._coord - this._z._coord) * (other._z._coord - this._z._coord));
     }
-    public double distance(Point3D other)
-    {
+    public double distance (Point3D other){
         return Math.sqrt(distanceSquared(other));
     }
-
-
-    public Point3D(Coordinate x, Coordinate y, Coordinate z)
-    {
-        this.x = new Coordinate(x._coord);
-        this.y = new Coordinate(y._coord);
-        this.z = new Coordinate(z._coord);
-    }
-    public Point3D(double x, double y, double z)
-    {
-       this(new Coordinate(x),
-            new Coordinate(y),
-            new Coordinate(z));
-    }
-    public Point3D(Point3D other)
-    {
-        this(other.x._coord ,other.y._coord,other.z._coord);
-    }
-
-    public Coordinate getX() {
-        return new Coordinate(x._coord);
-    }
-
-    public Coordinate getY() {
-        return new Coordinate(y._coord);
-    }
-
-    public Coordinate getZ() {
-        return new Coordinate(z._coord);
+    public Point3D add(Vector v) {
+        return new Point3D(this._x._coord + v._head._x._coord,
+                this._y._coord + v._head._y._coord,
+                this._z._coord + v._head._z._coord);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(o == null) return false;
-        if (!(o instanceof Point3D)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Point3D point3D = (Point3D) o;
-        return this.x.equals(point3D.getX()) &&
-                this.y.equals(point3D.getY()) &&
-                this.z.equals(point3D.getZ());
+        return _x.equals(point3D._x) &&
+                _y.equals(point3D._y) &&
+                _z.equals(point3D._z);
     }
 
-    @Override
-    public String toString() {
-        return "Point3D{" +
-                "(x=" + x.toString() +
-                ", y=" + y.toString() +
-                ", z=" + z.toString() +
-                ")}";
-    }
 }
