@@ -20,7 +20,6 @@ public class Plane implements Geometry {
     @Override
     public Vector getNormal(Point3D _point3D)
     {
-        int ok=0;
-        return null;
+        return new Vector(_normal.get_head());
     }
 }
